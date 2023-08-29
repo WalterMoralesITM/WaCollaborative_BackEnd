@@ -56,12 +56,12 @@
         /// </summary>
         /// <param name="statusDTO"></param>
         /// <returns>StatusDTO</returns>        
-        public async Task<StatusDTO> GetStatusById(StatusDTO statusDTO)
+        public async Task<StatusDTO> GetStatusById(int id)
         {
             StatusDTO search;
             try
             {
-                search = await _unitOfWork.StatusRepository.GetStatusById(statusDTO);
+                search = await _unitOfWork.StatusRepository.GetStatusById(id);
             }
             catch (Exception ex)
             {
@@ -78,9 +78,17 @@
         public async Task<StatusDTO> SaveStatus(StatusDTO statusDTO)
         {
             StatusDTO save;
+            StatusDTO findSave;
             try
             {
-                save = await _unitOfWork.StatusRepository.SaveStatus(statusDTO);
+                findSave = await _unitOfWork.StatusRepository.GetStatusByName(statusDTO.Name);
+                if (findSave.Id == 0)
+                {
+                    save = await _unitOfWork.StatusRepository.SaveStatus(statusDTO);
+                }
+                else {
+                    save = new StatusDTO();
+                }
             }
             catch (Exception ex)
             {

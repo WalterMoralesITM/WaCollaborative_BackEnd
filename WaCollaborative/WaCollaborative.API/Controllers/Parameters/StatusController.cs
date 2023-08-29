@@ -71,13 +71,13 @@
         /// Method Get By Id 
         /// </summary>
         /// <param name="statusDTO"></param>
-        /// <returns>ResponseDTO<StatusDTO></returns>
-        [HttpPost]
-        public async Task<ActionResult<ResponseDTO<StatusDTO>>> GetStatusById([FromBody] StatusDTO statusDTO)
+        /// <returns>ResponseDTO<StatusDTO></returns>        
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ResponseDTO<StatusDTO>>> GetStatusById(int id)
         {
             try
             {
-                StatusDTO status = await _statusServices.GetStatusById(statusDTO);
+                StatusDTO status = await _statusServices.GetStatusById(id);
                 var response = new ResponseDTO<StatusDTO>
                 {
                     Code = status != null && status != null && status.Id > 0 ? (int)HttpStatusCode.OK : (int)HttpStatusCode.NotFound,
@@ -98,8 +98,7 @@
         /// </summary>
         /// <param name="statusDTO"></param>
         /// <returns>ResponseDTO<StatusDTO></returns>
-        [HttpPost]
-        [Route("Save")]
+        [HttpPost]        
         public async Task<ActionResult<ResponseDTO<StatusDTO>>> SaveStatus([FromBody] StatusDTO statusDTO)
         {
             try
@@ -125,13 +124,22 @@
         /// </summary>
         /// <param name="statusDTO"></param>
         /// <returns>ResponseDTO<StatusDTO></returns>
-        [HttpPost]
-        [Route("Update")]
-        public async Task<ActionResult<ResponseDTO<StatusDTO>>> UpdateStatus([FromBody] StatusDTO statusDTO)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ResponseDTO<StatusDTO>>> UpdateStatus(int id, [FromBody] StatusDTO statusDTO)
         {
+            StatusDTO update;
+            StatusDTO findUpdate;
             try
             {
-                StatusDTO update = await _statusServices.UpdateStatus(statusDTO);
+                findUpdate = await _statusServices.GetStatusById(id);
+                if (findUpdate.Id == 0)
+                {
+                    update = statusDTO;
+                }
+                else {
+                    statusDTO.Id = findUpdate.Id;
+                    update = await _statusServices.UpdateStatus(statusDTO);
+                }                 
                 var response = new ResponseDTO<StatusDTO>
                 {
                     Code = update != null && update.Id > 0 ? (int)HttpStatusCode.OK : (int)HttpStatusCode.NotFound,

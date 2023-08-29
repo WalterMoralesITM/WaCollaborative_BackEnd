@@ -55,11 +55,11 @@
         /// <summary>
         /// Method Get By Id
         /// </summary>
-        /// <param name="statusDTO"></param>
+        /// <param name="id"></param>
         /// <returns>StatusDTO</returns>        
-        public async Task<StatusDTO> GetStatusById(StatusDTO statusDTO)
+        public async Task<StatusDTO> GetStatusById(int id)
         {
-            Status statusSearch = await _context.Status.Where(x => x.Id == statusDTO.Id).FirstOrDefaultAsync();
+            Status statusSearch = await _context.Status.Where(x => x.Id == id).FirstOrDefaultAsync();
             if (statusSearch == null)
             {
                 return new StatusDTO();
@@ -67,6 +67,24 @@
             else {
                 return StatusDTO.EntityMapStatusDTO(statusSearch);
             }            
+        }
+
+        /// <summary>
+        /// Method Get By Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>StatusDTO</returns>        
+        public async Task<StatusDTO> GetStatusByName(string name)
+        {
+            Status statusSearch = await _context.Status.Where(x => x.Name.ToUpper().Trim() == name.ToUpper().Trim()).FirstOrDefaultAsync();
+            if (statusSearch == null)
+            {
+                return new StatusDTO();
+            }
+            else
+            {
+                return StatusDTO.EntityMapStatusDTO(statusSearch);
+            }
         }
 
         /// <summary>

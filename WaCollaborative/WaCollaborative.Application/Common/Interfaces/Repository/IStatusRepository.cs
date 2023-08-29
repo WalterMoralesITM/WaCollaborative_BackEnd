@@ -25,9 +25,16 @@
         /// <summary>
         /// Method Get Status By Id
         /// </summary>
-        /// <param name="statusDTO"></param>
+        /// <param name="id"></param>
         /// <returns>StatusDTO</returns>
-        public Task<StatusDTO> GetStatusById(StatusDTO statusDTO);
+        public Task<StatusDTO> GetStatusById(int id);
+
+        /// <summary>
+        /// Method Get Status By Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>StatusDTO</returns>
+        public Task<StatusDTO> GetStatusByName(string name);
 
         /// <summary>
         /// Method Save Status
