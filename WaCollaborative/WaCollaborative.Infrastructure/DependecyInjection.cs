@@ -6,6 +6,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using System;
     using WaCollaborative.Application.Common.Interfaces;
     using WaCollaborative.Infrastructure.Data;
     using WaCollaborative.Infrastructure.Repositories;
@@ -27,8 +28,10 @@
         /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration.GetConnectionString("WaCollaborative")));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();            
+            services.AddDbContext<DataContext>()
+            .BuildServiceProvider();
+
             return services;
         }
 

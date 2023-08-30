@@ -17,9 +17,9 @@
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
-        public string Shortname { get; set; }
+        public string Shortname { get; set; } = null!;
 
         #endregion Attributes 
 
