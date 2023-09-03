@@ -1,4 +1,4 @@
-﻿namespace WaCollaborative.Domain.Common.DTO
+﻿namespace WaCollaborative.Common.DTO
 {
 
     #region Import
@@ -13,6 +13,7 @@
 
     public class StatusDTO
     {
+
         #region Attributes
 
         public int Id { get; set; }
@@ -51,7 +52,7 @@
             {
                 Id = status.Id,
                 Name = status.Name,
-                Shortname = status.Shortname                
+                Shortname = status.Shortname
             };
         }
 

@@ -5,7 +5,7 @@
 
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using WaCollaborative.Domain.Common.DTO;
+    using WaCollaborative.Common.DTO;
     using WaCollaborative.Application.Common.Exceptions;
     using WaCollaborative.Application.Common.Interfaces;
     using WaCollaborative.Application.Common.Interfaces.Services;

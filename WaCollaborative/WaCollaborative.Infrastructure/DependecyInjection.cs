@@ -3,10 +3,8 @@
 
     #region Import
 
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using System;
     using WaCollaborative.Application.Common.Interfaces;
     using WaCollaborative.Infrastructure.Data;
     using WaCollaborative.Infrastructure.Repositories;
@@ -31,7 +29,7 @@
             services.AddTransient<IUnitOfWork, UnitOfWork>();            
             services.AddDbContext<DataContext>()
             .BuildServiceProvider();
-
+            
             return services;
         }
 

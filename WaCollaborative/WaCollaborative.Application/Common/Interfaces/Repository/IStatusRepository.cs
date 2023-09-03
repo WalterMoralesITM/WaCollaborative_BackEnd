@@ -3,7 +3,7 @@
 
     #region Import
 
-    using WaCollaborative.Domain.Common.DTO;
+    using WaCollaborative.Common.DTO;
 
     #endregion Import
 

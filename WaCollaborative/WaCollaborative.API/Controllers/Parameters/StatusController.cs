@@ -5,12 +5,10 @@
 
     using Microsoft.AspNetCore.Mvc;
     using System.Net;
-    using WaCollaborative.API.Response;
-    using WaCollaborative.Application.Common.DTO;
+    using WaCollaborative.API.Response;    
     using WaCollaborative.Application.Common.Constants;
-    using WaCollaborative.Domain.Common.DTO;
+    using WaCollaborative.Common.DTO;
     using WaCollaborative.Application.Common.Interfaces.Services;
-    using WaCollaborative.Domain.Entities;
 
     #endregion Import
 
@@ -18,8 +16,8 @@
     /// The controller StatusController
     /// </summary>
 
-    [Route("api/status")]
     [ApiController]
+    [Route("api/[controller]")]    
     public class StatusController : ControllerBase
     {
         #region Attributes

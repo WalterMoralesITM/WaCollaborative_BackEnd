@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.API", "WaCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Domain", "WaCollaborative.Domain\WaCollaborative.Domain.csproj", "{0DA2545A-5210-441F-87B5-AD23C90D9BA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaCollaborative.Infrastructure", "WaCollaborative.Infrastructure\WaCollaborative.Infrastructure.csproj", "{D3376F08-DEF0-4C0B-AF43-E82A8110B982}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Infrastructure", "WaCollaborative.Infrastructure\WaCollaborative.Infrastructure.csproj", "{D3376F08-DEF0-4C0B-AF43-E82A8110B982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaCollaborative.Application", "WaCollaborative.Application\WaCollaborative.Application.csproj", "{8CC19A9B-19B7-4A77-B3CC-66624D27D099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Application", "WaCollaborative.Application\WaCollaborative.Application.csproj", "{8CC19A9B-19B7-4A77-B3CC-66624D27D099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaCollaborative.Common", "WaCollaborative.Common\WaCollaborative.Common.csproj", "{CF557BA1-6FFC-43BE-A766-0C56B78087F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8CC19A9B-19B7-4A77-B3CC-66624D27D099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CC19A9B-19B7-4A77-B3CC-66624D27D099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CC19A9B-19B7-4A77-B3CC-66624D27D099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF557BA1-6FFC-43BE-A766-0C56B78087F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF557BA1-6FFC-43BE-A766-0C56B78087F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF557BA1-6FFC-43BE-A766-0C56B78087F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF557BA1-6FFC-43BE-A766-0C56B78087F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

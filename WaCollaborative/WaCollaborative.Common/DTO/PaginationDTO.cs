@@ -1,4 +1,4 @@
-﻿namespace WaCollaborative.Application.Common.DTO
+﻿namespace WaCollaborative.Common.DTO
 {
 
     /// <summary>

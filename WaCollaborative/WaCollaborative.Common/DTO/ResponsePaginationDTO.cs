@@ -1,17 +1,17 @@
-﻿namespace WaCollaborative.Application.Common.DTO
+﻿namespace WaCollaborative.Common.DTO
 {
-
     /// <summary>
-    /// The class ResponseDTO
+    /// The class ResponsePaginationDTO
     /// </summary>
 
-    public class ResponseDTO<T>
+    public class ResponsePaginationDTO<T>
     {
 
-        #region Atributos
+        #region Attributes
 
         public int Code { get; set; }
         public string Message { get; set; }
+        public PaginationDTO Pagination { get; set; }
         public T Response { get; set; }
 
         #endregion Attributes

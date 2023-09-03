@@ -15,8 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WaCollaborative.Application\WaCollaborative.Application.csproj" />
+    <ProjectReference Include="..\WaCollaborative.Common\WaCollaborative.Common.csproj" />
     <ProjectReference Include="..\WaCollaborative.Domain\WaCollaborative.Domain.csproj" />
-	<ProjectReference Include="..\WaCollaborative.Application\WaCollaborative.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WaCollaborative.Domain\WaCollaborative.Domain.csproj" />	
+    <ProjectReference Include="..\WaCollaborative.Common\WaCollaborative.Common.csproj" />
   </ItemGroup>
 
 </Project>

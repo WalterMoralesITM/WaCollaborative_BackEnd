@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using WaCollaborative.Application.Common.Interfaces.Repository;
-    using WaCollaborative.Domain.Common.DTO;
+    using WaCollaborative.Common.DTO;
     using WaCollaborative.Domain.Entities;
     using WaCollaborative.Infrastructure.Data;
 
