@@ -61,7 +61,7 @@
             if (!optionsBuilder.IsConfigured)
             {   
                 
-                optionsBuilder.UseSqlServer("Data Source=WIN10;Initial Catalog=WaCollaborative;Persist Security Info=True;User ID=sa;Password=programador;Pooling=False; Encrypt=False");
+                optionsBuilder.UseSqlServer("Data Source=WIN10;Initial Catalog=WaCollaborativeBD;Persist Security Info=True;User ID=sa;Password=programador;Pooling=False; Encrypt=False");
             }
         }
         
