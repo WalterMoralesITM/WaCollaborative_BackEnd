@@ -1,6 +1,5 @@
 ﻿namespace WaCollaborative.Common.DTO
 {
-
     #region Import
 
     using WaCollaborative.Domain.Entities;
@@ -13,7 +12,6 @@
 
     public class StatusDTO
     {
-
         #region Attributes
 
         public int Id { get; set; }
@@ -22,12 +20,14 @@
 
         public string Shortname { get; set; } = null!;
 
-        #endregion Attributes 
+        #endregion Attributes
+
+
 
         #region Methods
 
         /// <summary>
-        /// Method Convert DTO to Entity 
+        /// Method Convert DTO to Entity
         /// </summary>
         /// <param name="status"></param>
         /// <returns>Status</returns>
@@ -57,6 +57,5 @@
         }
 
         #endregion Methods
-
     }
 }

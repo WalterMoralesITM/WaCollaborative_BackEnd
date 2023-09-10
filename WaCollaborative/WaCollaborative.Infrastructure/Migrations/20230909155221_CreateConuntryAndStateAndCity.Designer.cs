@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WaCollaborative.Infrastructure.Data;
 
@@ -10,9 +11,11 @@ using WaCollaborative.Infrastructure.Data;
 namespace WaCollaborative.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230909155221_CreateConuntryAndStateAndCity")]
+    partial class CreateConuntryAndStateAndCity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace WaCollaborative.Infrastructure.Migrations
                     b.HasIndex("StateId", "Name")
                         .IsUnique();
 
-                    b.ToTable("City", "Parameters");
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("WaCollaborative.Domain.Entities.Country", b =>
@@ -63,7 +66,7 @@ namespace WaCollaborative.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Country", "Parameters");
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("WaCollaborative.Domain.Entities.State", b =>
@@ -87,7 +90,7 @@ namespace WaCollaborative.Infrastructure.Migrations
                     b.HasIndex("CountryId", "Name")
                         .IsUnique();
 
-                    b.ToTable("State", "Parameters");
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("WaCollaborative.Domain.Entities.Status", b =>

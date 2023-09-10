@@ -6,7 +6,6 @@
 
     public class ResponsePaginationDTO<T>
     {
-
         #region Attributes
 
         public int Code { get; set; }
@@ -15,6 +14,5 @@
         public T Response { get; set; }
 
         #endregion Attributes
-
     }
 }

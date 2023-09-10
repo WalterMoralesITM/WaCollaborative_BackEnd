@@ -1,6 +1,5 @@
 ﻿namespace WaCollaborative.Domain.Entities
 {
-
     #region Import
 
     using System.ComponentModel.DataAnnotations;
@@ -15,7 +14,6 @@
     [Table("Status", Schema = "Parameters")]
     public class Status
     {
-
         #region Attributes
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,6 +30,5 @@
         public string Shortname { get; set; }
 
         #endregion Attributes
-
     }
 }

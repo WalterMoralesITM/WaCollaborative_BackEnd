@@ -1,122 +1,24 @@
 ﻿namespace WaCollaborative.Application.Services
 {
-
-    #region Import
-
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using WaCollaborative.Common.DTO;
-    using WaCollaborative.Application.Common.Exceptions;
-    using WaCollaborative.Application.Common.Interfaces;
+    using AutoMapper;
     using WaCollaborative.Application.Common.Interfaces.Services;
+    using WaCollaborative.Common.DTO;
+    using WaCollaborative.Domain.Entities;
+    using WaCollaborative.Infrastructure.Repositories;
 
-    #endregion Import
-
-    /// <summary>
-    /// The clase StatusServices
-    /// </summary>
-
-    public class StatusServices : IStatusServices
+    public class StatusServices : BaseService<StatusDTO, Status>, IStatusServices
     {
-        #region Attributes
+        private IStatusRepository _statusRepository;
+        private IMapper _mapper;
 
-        private readonly IUnitOfWork _unitOfWork;
-
-        #endregion Attributes
-
-        #region Constructor
-
-        public StatusServices(IUnitOfWork unitOfWork)
+        public StatusServices(
+            IBaseRepository<Status> repository,
+            IMapper mapper,
+            IStatusRepository statusRepository)
+            : base(repository, mapper)
         {
-            _unitOfWork = unitOfWork;
+            _statusRepository = statusRepository;
+            _mapper = mapper;
         }
-
-        #endregion Constructor
-
-        #region Methods
-
-        /// <summary>
-        /// Method Get List Status
-        /// </summary>
-        /// <returns>List<StatusDTO></returns>
-        public async Task<List<StatusDTO>> GetStatus()
-        {
-            try
-            {               
-                return await _unitOfWork.StatusRepository.GetStatus();
-            }
-            catch (Exception ex)
-            {
-                throw new GeneralException(" Error " + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Method Get By Id
-        /// </summary>
-        /// <param name="statusDTO"></param>
-        /// <returns>StatusDTO</returns>        
-        public async Task<StatusDTO> GetStatusById(int id)
-        {
-            StatusDTO search;
-            try
-            {
-                search = await _unitOfWork.StatusRepository.GetStatusById(id);
-            }
-            catch (Exception ex)
-            {
-                throw new GeneralException(" Error " + ex.Message);
-            }
-            return search;
-        }
-
-        /// <summary>
-        /// Method Save Status
-        /// </summary>
-        /// <param name="statusDTO"></param>
-        /// <returns>StatusDTO</returns>       
-        public async Task<StatusDTO> SaveStatus(StatusDTO statusDTO)
-        {
-            StatusDTO save;
-            StatusDTO findSave;
-            try
-            {
-                findSave = await _unitOfWork.StatusRepository.GetStatusByName(statusDTO.Name);
-                if (findSave.Id == 0)
-                {
-                    save = await _unitOfWork.StatusRepository.SaveStatus(statusDTO);
-                }
-                else {
-                    save = new StatusDTO();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new GeneralException(" Error " + ex.Message);
-            }
-            return save;
-        }
-
-        /// <summary>
-        /// Method Update Status
-        /// </summary>
-        /// <param name="statusDTO"></param>
-        /// <returns>StatusDTO</returns>       
-        public async Task<StatusDTO> UpdateStatus(StatusDTO statusDTO)
-        {
-            StatusDTO update;
-            try
-            {
-                update = await _unitOfWork.StatusRepository.UpdateStatus(statusDTO);
-            }
-            catch (Exception ex)
-            {
-                throw new GeneralException(" Error " + ex.Message);
-            }
-            return update;
-        }
-
-        #endregion Methods
-
     }
 }

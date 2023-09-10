@@ -3,6 +3,7 @@
     #region Import
 
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
     using WaCollaborative.Domain.Entities;
 
     #endregion Import
@@ -13,18 +14,21 @@
 
     public class DataContext : DbContext
     {
+        public IConfiguration _configuration { get; }
+
         #region Constructor
 
         public DataContext()
-        {           
+        {
         }
 
         /// <summary>
         /// Constructor Default
         /// </summary>
         /// <param name="options"></param>
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options, IConfiguration configuration) : base(options)
         {
+            _configuration = configuration;
         }
 
         #endregion Constructor
@@ -32,6 +36,9 @@
         #region Entities
 
         public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<State> States { get; set; }
 
         #endregion Entities
 
@@ -54,18 +61,11 @@
 
                 entity.HasIndex(s => new { s.Name }).IsUnique();
             });
+            modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique();
+            modelBuilder.Entity<State>().HasIndex(s => new { s.CountryId, s.Name }).IsUnique();
+            modelBuilder.Entity<City>().HasIndex(c => new { c.StateId, c.Name }).IsUnique();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {   
-                
-                optionsBuilder.UseSqlServer("Data Source=WIN10;Initial Catalog=WaCollaborative;Persist Security Info=True;User ID=sa;Password=programador;Pooling=False; Encrypt=False");
-            }
-        }
-        
         #endregion Model
-
     }
 }
