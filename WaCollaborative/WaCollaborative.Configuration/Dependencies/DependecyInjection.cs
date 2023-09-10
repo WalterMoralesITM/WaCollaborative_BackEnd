@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WaCollaborative.Application.Common.Interfaces.Services;
 using WaCollaborative.Application.Services;
@@ -15,14 +16,29 @@ namespace WaCollaborative.Configuration.Dependencies
         {
             services.AddAutoMapper(typeof(CountryMapperProfile));
             services.AddAutoMapper(typeof(StatusMapperProfile));
+
             services.AddDbContext<DataContext>(x => x.UseSqlServer("name=WaCollaborativeConnection"));
+
+            services.AddTransient<SeedDb>();
+
             services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
             services.AddTransient(typeof(ICountriesRepository), typeof(CountriesRepository));
             services.AddTransient(typeof(IBaseService<,>), typeof(BaseService<,>));
             services.AddTransient(typeof(ICountriesService), typeof(CountriesService));
             services.AddTransient(typeof(IStatusServices), typeof(StatusServices));
             services.AddTransient(typeof(IStatusRepository), typeof(StatusRepository));
+        }
+
+        public static void SeedData(WebApplication app)
+        {
+            var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+            using (var scope = scopedFactory!.CreateScope())
+            {
+                var service = scope.ServiceProvider.GetService<SeedDb>();
+                service!.SeedAsync().Wait();
+            }
         }
     }
 }

@@ -1,16 +1,7 @@
-﻿namespace WaCollaborative.Infrastructure.Data
+﻿using WaCollaborative.Domain.Entities;
+
+namespace WaCollaborative.Infrastructure.Data
 {
-
-    #region Import
-
-    using WaCollaborative.Domain.Entities;
-
-    #endregion Import
-
-    /// <summary>
-    /// The class SeedDb
-    /// </summary>
-
     public class SeedDb
     {
 
@@ -34,7 +25,7 @@
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
-            await CheckStatusAsync();            
+            await CheckStatusAsync();
         }
 
         private async Task CheckStatusAsync()
@@ -42,7 +33,7 @@
             if (!_context.Status.Any())
             {
                 _context.Status.Add(new Status { Name = "Activo", Shortname = "ACT" });
-                _context.Status.Add(new Status { Name = "Inactivo", Shortname = "INACT" });               
+                _context.Status.Add(new Status { Name = "Inactivo", Shortname = "INACT" });
                 await _context.SaveChangesAsync();
             }
         }
