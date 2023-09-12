@@ -6,7 +6,7 @@
 
     [ApiController]
     [Route("api/[controller]")]
-    public class StatusController : BaseController<StatusDTO, StatusDTO>
+    public class StatusController : BaseController<StatusDTO>
     {
         private readonly IStatusServices _statusServices;
 

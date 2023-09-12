@@ -23,12 +23,21 @@ namespace WaCollaborative.Configuration.Dependencies
 
             services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddTransient(typeof(IBaseService<,>), typeof(BaseService<,>));
 
             services.AddTransient(typeof(ICountriesRepository), typeof(CountriesRepository));
-            services.AddTransient(typeof(IBaseService<,>), typeof(BaseService<,>));
             services.AddTransient(typeof(ICountriesService), typeof(CountriesService));
-            services.AddTransient(typeof(IStatusServices), typeof(StatusServices));
+
+            services.AddTransient(typeof(IStatesRepository), typeof(StatesRepository));
+            services.AddTransient(typeof(IStatesService), typeof(StatesService));
+
+            services.AddTransient(typeof(ICitiesRepository), typeof(CitiesRepository));
+            services.AddTransient(typeof(ICitiesService), typeof(CitiesService));
+
             services.AddTransient(typeof(IStatusRepository), typeof(StatusRepository));
+            services.AddTransient(typeof(IStatusServices), typeof(StatusServices));
+            
+            
         }
 
         public static void SeedData(WebApplication app)

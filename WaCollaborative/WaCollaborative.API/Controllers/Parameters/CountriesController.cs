@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WaCollaborative.Application.Services;
 using WaCollaborative.Common.DTO;
-using WaCollaborative.Domain.Entities;
 
 namespace WaCollaborative.API.Controllers.Parameters
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CountriesController : BaseController<CountryDTO, CountryDTO>
+    public class CountriesController : BaseController<CountryDTO>
     {
         private ICountriesService _countriesService;
 
