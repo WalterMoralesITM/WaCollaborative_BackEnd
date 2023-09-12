@@ -19,24 +19,24 @@ namespace WaCollaborative.Application.Services
             _mapper = mapper;
         }
 
-        public async Task DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
             await _repository.DeleteAsync(id);
         }
 
-        public async Task<IEnumerable<TDTO>> GetAsync()
+        public virtual async Task<IEnumerable<TDTO>> GetAsync()
         {
             IEnumerable<TEntity> resultEntity = await _repository.GetAsync();
             return _mapper.Map<IEnumerable<TDTO>>(resultEntity);
         }
 
-        public async Task<TDTO> GetAsync(int id)
+        public virtual async Task<TDTO> GetAsync(int id)
         {
             TEntity resultEntity = await _repository.GetAsync(id);
             return _mapper.Map<TDTO>(resultEntity);
         }
 
-        public async Task<Response<TDTO>> AddAsync(TDTO dto)
+        public virtual async Task<Response<TDTO>> AddAsync(TDTO dto)
         {
             TEntity entity = _mapper.Map<TEntity>(dto);
             try
@@ -60,7 +60,7 @@ namespace WaCollaborative.Application.Services
             }
         }
 
-        public async Task<Response<TDTO>> UpdateAsync(TDTO dto)
+        public virtual async Task<Response<TDTO>> UpdateAsync(TDTO dto)
         {
             TEntity entity = _mapper.Map<TEntity>(dto);
             try

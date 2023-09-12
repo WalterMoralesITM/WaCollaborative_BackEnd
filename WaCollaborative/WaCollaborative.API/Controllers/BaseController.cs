@@ -3,7 +3,7 @@ using WaCollaborative.Application.Services;
 
 namespace WaCollaborative.API.Controllers
 {
-    public class BaseController<TDTO, TEntity> : Controller where TDTO : class where TEntity : class
+    public class BaseController<TDTO> : Controller where TDTO : class
     {
         private IBaseService<TDTO, TDTO> _service;
 

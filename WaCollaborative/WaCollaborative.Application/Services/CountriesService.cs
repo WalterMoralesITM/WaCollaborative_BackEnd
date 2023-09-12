@@ -19,5 +19,17 @@ namespace WaCollaborative.Application.Services
             _countriesRepository = countriesRepository;
             _mapper = mapper;
         }
+
+        public override async Task<IEnumerable<CountryDTO>> GetAsync()
+        {
+            IEnumerable<Country> countries =  await _countriesRepository.GetAsync();
+            return _mapper.Map<IEnumerable<CountryDTO>>(countries);
+        }
+
+        public override async Task<CountryDTO> GetAsync(int id)
+        {
+            Country country = await _countriesRepository.GetAsync(id);
+            return _mapper.Map<CountryDTO>(country);
+        }
     }
 }

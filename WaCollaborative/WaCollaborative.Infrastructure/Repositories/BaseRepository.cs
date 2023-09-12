@@ -5,7 +5,7 @@
 
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        protected DataContext _context;
+        public DataContext _context;
         protected DbSet<TEntity> _entity;
 
         public BaseRepository(DataContext context)
@@ -14,7 +14,7 @@
             _entity = context.Set<TEntity>();
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             _context.Add(entity);
 
@@ -22,7 +22,7 @@
             return entity;
         }
 
-        public async Task DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
             var row = await _entity.FindAsync(id);
             if (row != null)
@@ -32,18 +32,18 @@
             }
         }
 
-        public async Task<TEntity> GetAsync(int id)
+        public virtual async Task<TEntity> GetAsync(int id)
         {
             var row = await _entity.FindAsync(id);
             return row!;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAsync()
         {
             return await _entity.ToListAsync();
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             _context.Update(entity);
             await _context.SaveChangesAsync();
