@@ -6,12 +6,12 @@
     using WaCollaborative.Domain.Entities;
     using WaCollaborative.Infrastructure.Repositories;
 
-    public class StatusServices : BaseService<StatusDTO, Status>, IStatusServices
+    public class StatusService : BaseService<StatusDTO, Status>, IStatusService
     {
         private IStatusRepository _statusRepository;
         private IMapper _mapper;
 
-        public StatusServices(
+        public StatusService(
             IBaseRepository<Status> repository,
             IMapper mapper,
             IStatusRepository statusRepository)

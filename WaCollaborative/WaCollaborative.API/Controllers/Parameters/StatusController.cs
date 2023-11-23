@@ -8,9 +8,9 @@
     [Route("api/[controller]")]
     public class StatusController : BaseController<StatusDTO>
     {
-        private readonly IStatusServices _statusServices;
+        private readonly IStatusService _statusServices;
 
-        public StatusController(IStatusServices statusServices): base(statusServices)
+        public StatusController(IStatusService statusServices): base(statusServices)
         {
             _statusServices = statusServices;
         }
