@@ -35,9 +35,19 @@ namespace WaCollaborative.Configuration.Dependencies
             services.AddTransient(typeof(ICitiesService), typeof(CitiesService));
 
             services.AddTransient(typeof(IStatusRepository), typeof(StatusRepository));
-            services.AddTransient(typeof(IStatusServices), typeof(StatusServices));
-            
-            
+            services.AddTransient(typeof(IStatusService), typeof(StatusService));
+
+            services.AddTransient(typeof(IMeasurementUnitsRepository), typeof(MeasurementUnitsRepository));
+            services.AddTransient(typeof(IMeasurementUnitsService), typeof(MeasurementUnitsService));
+
+            services.AddTransient(typeof(ICategoriesRepository), typeof(CategoriesRepository));
+            services.AddTransient(typeof(ICategoriesService), typeof(CategoriesService));
+
+            services.AddTransient(typeof(ISegmentsRepository), typeof(SegmentsRepository));
+            services.AddTransient(typeof(ISegmentsService), typeof(SegmentsService));
+
+            services.AddTransient(typeof(IProductsRepository), typeof(ProductsRepository));
+            services.AddTransient(typeof(IProductsService), typeof(ProductsService));
         }
 
         public static void SeedData(WebApplication app)

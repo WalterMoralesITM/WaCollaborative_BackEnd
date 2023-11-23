@@ -3,7 +3,7 @@
     using WaCollaborative.Application.Services;
     using WaCollaborative.Common.DTO;
 
-    public interface IStatusServices : IBaseService<StatusDTO, StatusDTO>
+    public interface IStatusService : IBaseService<StatusDTO, StatusDTO>
     {
     }
 }

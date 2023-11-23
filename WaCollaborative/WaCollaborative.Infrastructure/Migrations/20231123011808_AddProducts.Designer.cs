@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WaCollaborative.Infrastructure.Data;
 
@@ -10,9 +11,11 @@ using WaCollaborative.Infrastructure.Data;
 namespace WaCollaborative.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231123011808_AddProducts")]
+    partial class AddProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,14 +32,14 @@ namespace WaCollaborative.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Description")
+                    b.HasIndex("Name")
                         .IsUnique();
 
                     b.ToTable("Categories");
@@ -95,14 +98,14 @@ namespace WaCollaborative.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Description")
+                    b.HasIndex("Name")
                         .IsUnique();
 
                     b.ToTable("MeasurementUnits");
@@ -127,15 +130,18 @@ namespace WaCollaborative.Infrastructure.Migrations
                     b.Property<decimal>("ConversionFactor")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Description")
+                    b.Property<int>("MeasurementUnitId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("MeasurementUnitId")
+                    b.Property<int>("SegmentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SegmentId")
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -149,6 +155,8 @@ namespace WaCollaborative.Infrastructure.Migrations
 
                     b.HasIndex("SegmentId");
 
+                    b.HasIndex("StatusId");
+
                     b.ToTable("Products");
                 });
 
@@ -160,14 +168,14 @@ namespace WaCollaborative.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Description")
+                    b.HasIndex("Name")
                         .IsUnique();
 
                     b.ToTable("Segments");
@@ -255,11 +263,19 @@ namespace WaCollaborative.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WaCollaborative.Domain.Entities.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
 
                     b.Navigation("MeasurementUnit");
 
                     b.Navigation("Segment");
+
+                    b.Navigation("Status");
                 });
 
             modelBuilder.Entity("WaCollaborative.Domain.Entities.State", b =>

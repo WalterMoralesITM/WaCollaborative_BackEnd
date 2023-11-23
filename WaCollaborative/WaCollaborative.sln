@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Common", "WaCollaborative.Common\WaCollaborative.Common.csproj", "{CF557BA1-6FFC-43BE-A766-0C56B78087F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaCollaborative.Configuration", "WaCollaborative.Configuration\WaCollaborative.Configuration.csproj", "{33345CBD-5F0A-40E6-B4BC-F2879E0596E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Configuration", "WaCollaborative.Configuration\WaCollaborative.Configuration.csproj", "{33345CBD-5F0A-40E6-B4BC-F2879E0596E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaCollaborative.Tests", "WaCollaborative.Tests\WaCollaborative.Tests.csproj", "{1ACDD89F-F052-4974-9CA2-EE2B148509EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{33345CBD-5F0A-40E6-B4BC-F2879E0596E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33345CBD-5F0A-40E6-B4BC-F2879E0596E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33345CBD-5F0A-40E6-B4BC-F2879E0596E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACDD89F-F052-4974-9CA2-EE2B148509EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACDD89F-F052-4974-9CA2-EE2B148509EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACDD89F-F052-4974-9CA2-EE2B148509EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACDD89F-F052-4974-9CA2-EE2B148509EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
